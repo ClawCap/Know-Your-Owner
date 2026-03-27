@@ -2,7 +2,7 @@
   "name": "douban-deep-profile-collect",
   "description": "采集豆瓣当前登录用户的全量个人信息，包括基础资料、看过的电影、想看的电影、读过的书、想读的书、广播动态。使用/mine/自动重定向获取用户ID，通过fetch+DOMParser在页面内分页采集全量数据。",
   "original_query": "采集豆瓣个人主页的全量信息，包括基础资料、看过的电影、想看的电影、读过的书、广播",
-  "original_res": "成功采集基础资料、看过电影177部、想看1部、读过的书0部、想读0部、广播40条。",
+  "original_res": "成功采集基础资料、看过电影、想看、读过的书、想读的书、广播。",
   "parameters": [],
   "platform": "豆瓣",
   "created_from": "douban-deep-profile-collect-log.json",

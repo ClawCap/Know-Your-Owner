@@ -17,7 +17,7 @@ The biggest pain point of AI assistants: **they don't know you.**
 | | Without Know Your Owner | With Know Your Owner |
 |---|---|---|
 | **How well it knows you** | Starts from zero, you explain preferences every time | Knows your interests, follows, and personality from day one |
-| **Personalization** | Generic answers, same for everyone | Precise: "You bookmarked 34 pasta recipes on Xiaohongshu, so here's a pasta restaurant" |
+| **Personalization** | Generic answers, same for everyone | Precise: "You bookmarked 31 shader tutorials on Bilibili, here's a new pixel rendering course" |
 | **Profile building** | Manual questionnaires, tedious and incomplete | Auto-collects from 5 platforms, done in 10-20 minutes |
 | **Data safety** | — | Data stays local, inferences clearly labeled, no conclusions on sensitive topics |
 
@@ -60,11 +60,11 @@ It will auto-detect the environment, install dependencies (ManoBrowser), guide c
 
 | Platform | What it collects | Example |
 |----------|-----------------|---------|
-| 🎵 **Douyin (TikTok CN)** | Profile, posts, likes, favorites, following list | "Following 214 dance-related accounts" |
-| 📕 **Xiaohongshu (RED)** | Profile, notes, bookmarks, liked posts | "Bookmarked 34 pasta recipes" |
+| 🎵 **Douyin (TikTok CN)** | Profile, posts, likes, favorites, following list | "14 out of 22 posts are pixel animation clips" |
+| 📕 **Xiaohongshu (RED)** | Profile, notes, bookmarks, liked posts | "Bookmarked 12 game engine tutorials + 8 publishing guides" |
 | 🐦 **Weibo** | Profile, posts, following, favorites | "Recent posts mainly about AI and coding" |
-| 📖 **Douban** | Profile, movies watched/wanted, books, broadcasts | "213 books rated, 69% rating rate, hard sci-fi fan" |
-| 📺 **Bilibili** | Profile, uploads, favorite folders, following list | "93 tutorial bookmarks in 4 folders" |
+| 📖 **Douban** | Profile, movies watched/wanted, books, broadcasts | "213 books rated, 69% rating rate, hard sci-fi devotee" |
+| 📺 **Bilibili** | Profile, uploads, favorite folders, following list | "93 dev tutorial bookmarks across 4 folders" |
 
 Also supports **generic mode** — tell your AI assistant about other platforms you use, and it'll explore and collect using ManoBrowser.
 
@@ -74,7 +74,7 @@ Not just labels — precise insights backed by data:
 
 | Dimension | How | Example |
 |-----------|-----|---------|
-| **Creator identity** | Cross-platform content consistency | "Posts pixel game tutorials on both Douyin and Bilibili" |
+| **Creator identity** | Cross-platform content consistency | "Posts pixel game dev content on both Douyin and Bilibili" |
 | **Bookmark breakdown** | Fine-grained categorization | "93 Bilibili bookmarks split into coding/design/music folders" |
 | **Following clusters** | Type distribution analysis | "60% of follows are indie game developers" |
 | **Rating behavior** | Rating patterns and strictness | "69% rating rate on Douban, strict type, only 1-star was a self-help book" |
