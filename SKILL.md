@@ -1,6 +1,6 @@
 ---
 name: know-your-owner
-description: 装龙虾必备 Skill。通过 ManoBrowser 深度采集用户已登录的社交平台数据，交叉分析生成精准个人画像，自动写好 USER.md 和 MEMORY.md。
+description: Collect user data from logged-in social platforms (Douyin, Xiaohongshu, Weibo, Douban, Bilibili), cross-analyze to build a precise personal profile, and auto-generate USER.md + MEMORY.md. Use for new user onboarding, personalization, and building user context. 通过用户已登录的社交平台自动采集数据并交叉分析，生成精准用户画像，写入 USER.md 和 MEMORY.md。
 version: 2.5.0
 depends: manobrowser
 ---
