@@ -197,6 +197,50 @@ mcp__{chrome-instance}__{工具短名}
 
 通用模式没有预设选择器，需要 agent 实时探索，可能多轮尝试。采集到的数据同样纳入画像分析。
 
+## 2.5 原始数据持久化（⚠️ 必须执行）
+
+**每个平台采集完毕后，立即将该平台的全量原始数据写入本地文件。不要等所有平台都采集完再保存——每完成一个就保存一个，防止中断丢失。**
+
+```
+目标目录：{工作目录}/know-your-owner-data/
+
+每个平台单独一个文件：
+  know-your-owner-data/douyin.json
+  know-your-owner-data/xiaohongshu.json
+  know-your-owner-data/weibo.json
+  know-your-owner-data/douban.json
+  know-your-owner-data/bilibili.json
+  know-your-owner-data/metadata.json    ← 最后生成
+```
+
+**执行方式**：每个平台的子 Skill 执行完后，JS 脚本会将数据 `return JSON.stringify(...)` 返回到上下文。此时 **你必须立即执行文件写入操作**，将完整的 JSON 数据写入对应的 `{platform}.json` 文件。
+
+**不要只保存摘要/统计——保存完整数据**：
+- ✅ 完整的 209 条收藏标题列表
+- ✅ 完整的 177 部电影评分列表
+- ✅ 完整的 581 人关注列表
+- ❌ 不要只保存 "收藏: 209条"
+
+**metadata.json** 在所有平台采集完后生成：
+```json
+{
+  "version": "2.6.0",
+  "collected_at": "{ISO时间}",
+  "platforms": {
+    "{platform}": {
+      "status": "success|skipped|failed",
+      "collected_at": "{ISO时间}",
+      "counts": { "各维度": "数量" },
+      "file": "{platform}.json"
+    }
+  }
+}
+```
+
+> 💡 这些原始数据文件用于：日常对话查询、画像刷新对比、其他 Skill 复用（照妖镜/月老/REAL等可直接读取，无需重新采集）。
+
+---
+
 ## 3. 画像分析
 
 不是列标签，而是**用数据做精准洞察**。
