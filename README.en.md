@@ -165,6 +165,20 @@ Know-Your-Owner/
 
 **Dependency**: [ManoBrowser](https://github.com/ClawCap/ManoBrowser) (auto-downloaded from GitHub on first use)
 
+
+---
+
+## 👋 Join Our Community
+
+Whether you're a developer or a casual user, come hang out! Share your experience, report bugs, suggest ideas, or just lurk and enjoy other people's reports!
+
+| | |
+|---|---|
+| [![Discord](https://img.shields.io/badge/Discord-Join%20us-5865F2?logo=discord&logoColor=white)](https://discord.gg/5EY7nevN5z) | Join our Discord community! Connect with developers and other users. |
+| [![Feishu](https://img.shields.io/badge/飞书群-加入-00D09C?logo=bytedance&logoColor=white)](docs/img/feishu_qr.png) | Scan QR code to join our Feishu group. |
+
+- 👉 [**Submit Issue**](https://github.com/ClawCap/Know-Your-Owner/issues/new/choose) — Bug reports / Feature requests
+- 💬 [**Discussions**](https://github.com/ClawCap/Know-Your-Owner/discussions) — Share your experience
 ---
 
 ## 📄 License
