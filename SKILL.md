@@ -199,45 +199,56 @@ mcp__{chrome-instance}__{工具短名}
 
 ## 2.5 原始数据持久化（⚠️ 必须执行）
 
-**每个平台采集完毕后，立即将该平台的全量原始数据写入本地文件。不要等所有平台都采集完再保存——每完成一个就保存一个，防止中断丢失。**
+### 统一数据目录
+
+所有 ClawCap Skill 共享同一个本地数据目录 `clawcap-data/`，按**人**组织：
 
 ```
-目标目录：{工作目录}/know-your-owner-data/
-
-每个平台单独一个文件：
-  know-your-owner-data/douyin.json
-  know-your-owner-data/xiaohongshu.json
-  know-your-owner-data/weibo.json
-  know-your-owner-data/douban.json
-  know-your-owner-data/bilibili.json
-  know-your-owner-data/metadata.json    ← 最后生成
+{工作目录}/clawcap-data/
+├── self/                        ← 用户自己的数据
+│   ├── douyin.json
+│   ├── xiaohongshu.json
+│   ├── weibo.json
+│   ├── douban.json
+│   ├── bilibili.json
+│   └── metadata.json
+└── reports/                     ← 各 Skill 生成的报告
+    └── know_your_owner_{日期}.md
 ```
 
-**执行方式**：每个平台的子 Skill 执行完后，JS 脚本会将数据 `return JSON.stringify(...)` 返回到上下文。此时 **你必须立即执行文件写入操作**，将完整的 JSON 数据写入对应的 `{platform}.json` 文件。
+### 采集前检查已有数据
 
-**不要只保存摘要/统计——保存完整数据**：
-- ✅ 完整的 209 条收藏标题列表
-- ✅ 完整的 177 部电影评分列表
-- ✅ 完整的 581 人关注列表
+**在采集每个平台之前，先检查 `clawcap-data/self/{platform}.json` 是否存在**：
+- **存在 + 采集时间 < 7天** → 直接复用，跳过该平台采集，告知用户"复用X天前的{平台}数据"
+- **存在 + 采集时间 > 7天** → 询问用户"上次采集是X天前，要重新采集还是用旧数据？"
+- **不存在** → 正常采集
+
+> 💡 如果用户之前用过照妖镜/REAL/月老等其他 ClawCap Skill，数据已经在 `clawcap-data/self/` 里了，直接复用即可。
+
+### 采集后立即保存
+
+**每个平台采集完毕后，立即将全量原始数据写入文件。每完成一个就保存一个，不要等全部完成。**
+
+子 Skill 的 JS 脚本将数据 `return JSON.stringify(...)` 返回到上下文后，**你必须立即将完整 JSON 写入 `clawcap-data/self/{platform}.json`**。
+
+**保存完整数据，不是摘要**：
+- ✅ 完整的收藏标题列表、评分列表、关注列表
 - ❌ 不要只保存 "收藏: 209条"
 
-**metadata.json** 在所有平台采集完后生成：
+**metadata.json** 在所有平台采集完后生成/更新：
 ```json
 {
-  "version": "2.6.0",
   "collected_at": "{ISO时间}",
+  "skill": "know-your-owner",
   "platforms": {
     "{platform}": {
-      "status": "success|skipped|failed",
+      "status": "success|skipped|reused",
       "collected_at": "{ISO时间}",
-      "counts": { "各维度": "数量" },
-      "file": "{platform}.json"
+      "counts": { "各维度": "数量" }
     }
   }
 }
 ```
-
-> 💡 这些原始数据文件用于：日常对话查询、画像刷新对比、其他 Skill 复用（照妖镜/月老/REAL等可直接读取，无需重新采集）。
 
 ---
 
